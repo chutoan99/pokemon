@@ -1,0 +1,42 @@
+<div class="pagination">
+  <button class="pagination-item" (disabled)="isFirst" (click)="onFirstPage()">
+    <img
+      alt="angles left"
+      src="../../../assets/icons/angles-left.svg"
+      width="15"
+      height="15"
+    />
+  </button>
+  <button class="pagination-item" (disabled)="isFirst" (click)="onPrevPage()">
+    <img
+      alt="left right"
+      src="../../../assets/icons/angle-left.svg"
+      width="15"
+      height="15"
+    />
+  </button>
+  <button
+    class="pagination-item"
+    *ngFor="let page of pages"
+    [class.pagination-item--active]="page === currentPage"
+    (click)="onGoToPage( page )"
+  >
+    {{ page }}
+  </button>
+  <button class="pagination-item" (disabled)="isLast" (click)="onNextPage()">
+    <img
+      alt="angle right"
+      src="../../../assets/icons/angle-right.svg"
+      width="15"
+      height="15"
+    />
+  </button>
+  <button class="pagination-item" (disabled)="isLast" (click)="onLastPage()">
+    <img
+      alt="angles right"
+      src="../../../assets/icons/angles-right.svg"
+      width="15"
+      height="15"
+    />
+  </button>
+</div>

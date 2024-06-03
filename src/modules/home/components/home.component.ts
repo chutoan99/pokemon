@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../services';
 import { ParamCard } from '../models';
-import { Card, Types } from '../interfaces';
+import { Card, TypeExtra, Types } from '../interfaces';
+import { TYPE_COLOR } from '../resources';
 @Component({
   selector: 'app-home',
   templateUrl: '../templates/home.template.html',
@@ -14,14 +15,17 @@ export class HomePageComponent implements OnInit {
   protected types: Types[] | [] = [];
   protected images: string = '';
   protected urls: any[] = [];
-
-  constructor(private _pokemonService: PokemonService) {}
+  protected TYPE_COLOR = TYPE_COLOR;
+  protected typesRecords: TypeExtra[] = [];
+  protected currentType: number = -1;
+  constructor(private _pokemonService: PokemonService) {
+    this.typesRecords = Object.values(TYPE_COLOR);
+  }
 
   ngOnInit() {
     this._getListsPokemon();
     this._getTypesPokemon();
     this._getDetailPokemon('01H5GXS0FP36H9RNBQN5Z415W4');
-    this._getSpritePokemon('01H5GXS0FP36H9RNBQN5Z415W4');
   }
 
   /**
@@ -62,5 +66,20 @@ export class HomePageComponent implements OnInit {
     this._pokemonService.getImage(id).subscribe((res: any) => {
       this.images = URL.createObjectURL(res);
     });
+  }
+
+  /**
+   * @param {TypeExtra} type
+   * @return {void}
+   */
+  protected onChooseType(type: TypeExtra) {
+    this.currentType = type.id;
+  }
+
+  /**
+   * @return {void}
+   */
+  protected onSearch() {
+    this._getListsPokemon();
   }
 }

@@ -4,21 +4,22 @@ import { Observable, filter, map } from 'rxjs';
 import {
   CardListResponse,
   DetailCardResponse,
+  Pagination,
   TypeCardResponse,
 } from '../interfaces/home.interface';
 import { ParamCard } from '../models/params.model';
 import { Card, Types } from '../interfaces';
-import { response } from 'express';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PokemonService {
-  private urls : any[] = [];
+  public pagination!: Pagination;
+
   private readonly _endPoint: string =
     'https://api.vandvietnam.com/api/pokemon-api';
 
-  constructor(private _http: HttpClient) {}
+  constructor(private _httpClient: HttpClient) {}
 
   /**
    * @param {ParamCard} param
@@ -54,13 +55,16 @@ export class PokemonService {
       },
     };
 
-    return this._http
+    return this._httpClient
       .get<CardListResponse>(`${this._endPoint}/pokemons`, httpOptions)
       .pipe(
         filter(
           (res: CardListResponse) => res.status === 200 && res.data !== null
         ),
-        map((res: CardListResponse) => res.data || [])
+        map((res: CardListResponse) => {
+          this.pagination = res.meta;
+          return res.data || [];
+        })
       );
   }
 
@@ -75,7 +79,7 @@ export class PokemonService {
       }),
     };
 
-    return this._http
+    return this._httpClient
       .get<DetailCardResponse>(`${this._endPoint}/pokemons/${id}`, httpOptions)
       .pipe(
         filter(
@@ -94,8 +98,7 @@ export class PokemonService {
         'Content-Type': 'application/json',
       }),
     };
-
-    return this._http
+    return this._httpClient
       .get<TypeCardResponse>(`${this._endPoint}/types`, httpOptions)
       .pipe(
         filter(
@@ -105,11 +108,9 @@ export class PokemonService {
       );
   }
 
-
   public getImage(id: string): Observable<Blob> {
-    return this._http
-      .get(`${this._endPoint}/pokemons/${id}/sprite`, {
-        responseType: "blob"
-      });
+    return this._httpClient.get(`${this._endPoint}/pokemons/${id}/sprite`, {
+      responseType: 'blob',
+    });
   }
 }

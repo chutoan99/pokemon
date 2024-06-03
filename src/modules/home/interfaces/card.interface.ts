@@ -9,6 +9,7 @@ export type Types = {
 
 export type TypeExtra = Types & {
   color: string;
+  icon: any
 };
 
 export type Card = {

@@ -41,16 +41,3 @@ html {
 	scrollbar-width: thin;
 	box-sizing: inherit;
 }
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-.grid {
-	width: 100%;
-	display: block;
-	padding: 0;
-}
-
-.wide {
-	max-width: 1200px;
-	margin: 0 auto;
-}

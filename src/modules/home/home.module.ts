@@ -4,11 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { CardComponent, HomePageComponent } from './components';
+import {
+  CardComponent,
+  HomePageComponent,
+  PaginationComponent,
+} from './components';
 import { PokemonService } from './services';
 
 @NgModule({
-  declarations: [HomePageComponent, CardComponent],
+  declarations: [HomePageComponent, CardComponent, PaginationComponent],
   imports: [
     CommonModule,
     FormsModule,

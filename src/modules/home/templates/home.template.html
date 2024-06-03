@@ -1,11 +1,46 @@
 <div class="app-wrapper">
-  <div class="container">
-    <main class="parent">
-      <ng-container *ngIf="records.length >0">
-        <ng-container *ngFor="let item of records">
-          <card-item [data]="item"></card-item>
+  <div id="search">
+    <img
+      class="search_icon"
+      alt="Search icon"
+      src="../../../assets/icons/search.svg"
+      width="22"
+      height="22"
+    />
+    <input
+      type="text"
+      placeholder="Find a Pokémon..."
+      class="search_input"
+      [(ngModel)]="paramsCard.name"
+    />
+    <button class="search_button" (click)="onSearch()">Search</button>
+  </div>
+  <div class="app-inner">
+    <div id="filter">
+      <h2 class="filter_name">Type Pokemon</h2>
+      <div class="filter_types">
+        <div
+          class="type"
+          *ngFor="let type of typesRecords"
+          [ngStyle]="{'--type-color': type.color}"
+          [class.type--active]="type.id === currentType"
+          (click)="onChooseType( type )"
+        >
+          <img [src]="type.icon" [alt]="type.name" />
+          <span>{{type.name}}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <main class="parent">
+        <ng-container *ngIf="records.length >0">
+          <ng-container *ngFor="let item of records">
+            <card-item [data]="item"></card-item>
+          </ng-container>
         </ng-container>
-      </ng-container>
-    </main>
+      </main>
+      <pagination></pagination>
+    </div>
   </div>
 </div>

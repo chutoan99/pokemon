@@ -10,7 +10,4 @@ export class CardComponent  {
   @Input() public data!: Card;
   protected typeColor: TypeExtra | null = null;
   protected TYPE_COLOR = TYPE_COLOR
-  protected getBg() {
-TYPE_COLOR
-  }
 }

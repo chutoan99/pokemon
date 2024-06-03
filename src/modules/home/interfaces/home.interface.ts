@@ -3,7 +3,7 @@ import { Card, Types } from './card.interface';
 export interface CardListResponse {
   data?: Card[] | null;
   links: LinkResponse;
-  meta: PaginationMeta;
+  meta: Pagination;
   status: number;
   success: boolean;
 }
@@ -27,7 +27,7 @@ type LinkResponse = {
   next: string;
 };
 
-type PaginationMeta = {
+export type Pagination = {
   per_page: number;
   current_page: number;
   from: number;

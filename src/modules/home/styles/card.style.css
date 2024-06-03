@@ -1,0 +1,61 @@
+#card {
+  position: relative;
+
+  width: 100%;
+  border-radius: 10px;
+  padding: 16px 12px;
+  box-shadow: 0 16px 20px rgba(0, 0, 0, 0.15);
+}
+#card .card_img {
+  display: block;
+  position: relative;
+
+  width: 145px;
+  height: 145px;
+  margin: 16px auto;
+}
+#card .card_hp {
+  text-align: center;
+  margin-left: auto;
+
+  width: 64px;
+  background-color: #fff;
+  padding: 6px 0;
+  border-radius: 20px;
+  font-weight: 400;
+}
+#card .card_hp span {
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  font-weight: 600;
+}
+#card .card_name {
+  text-align: center;
+
+  font-size: 18px;
+  font-weight: 600;
+}
+#card .card_types {
+  display: flex;
+  justify-content: space-around;
+
+  margin: 16px 0 32px 0;
+}
+#card .card_types span {
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  font-weight: 600;
+  padding: 5px 16px;
+  border-radius: 16px;
+  color: #fff;
+}
+#card .card_stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+#card .card_stats p {
+  margin-top: 2px;
+  color: #404060;
+}

@@ -1,0 +1,40 @@
+<div
+  id="card"
+  class="card"
+  [style.background]="'radial-gradient(circle at 50% 0%, ' + (TYPE_COLOR[data.type_1].color || '#ffffff') + ' 36%, #ffffff 36%)'"
+>
+  <p class="card_hp">
+    <span>HP</span>
+    {{data.hp}}
+  </p>
+  <img
+    class="card_img"
+    [src]="'https://img.pokemondb.net/artwork/' + (data.name | lowercase) + '.jpg'"
+    [alt]="data.name"
+  />
+  <h2 class="card_name">{{data.name}}</h2>
+  <div class="card_types">
+    <span [style.background]="TYPE_COLOR[data.type_1].color"
+      >{{TYPE_COLOR[data.type_1].name}}</span
+    >
+    <ng-container *ngIf="data.type_2">
+      <span [style.background]="TYPE_COLOR[data.type_2].color"
+        >{{TYPE_COLOR[data.type_2].name}}</span
+      >
+    </ng-container>
+  </div>
+  <div class="card_stats">
+    <div>
+      <h3>{{data.attack}}</h3>
+      <p>Attack</p>
+    </div>
+    <div>
+      <h3>{{data.defense}}</h3>
+      <p>Defense</p>
+    </div>
+    <div>
+      <h3>{{data.speed}}</h3>
+      <p>Speed</p>
+    </div>
+  </div>
+</div>

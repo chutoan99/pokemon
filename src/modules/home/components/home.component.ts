@@ -25,11 +25,11 @@ import { capitalizeFirstLetter } from '../helpers';
   ],
 })
 export class HomePageComponent implements OnInit {
+
   protected paramsCard = new ParamCard();
   protected records: Card[] | [] = [];
   protected types: Types[] | [] = [];
   protected images: string = '';
-  protected urls: any[] = [];
   protected isLoading: boolean = false;
   protected typesRecords: TypeExtra[] = [];
   protected sortOrder: string = SortType.ASC;
@@ -54,7 +54,7 @@ export class HomePageComponent implements OnInit {
    * @return {void}
    */
   protected onChooseType(id: TypeCard): void {
-    this.paramsCard.type = id;
+    this.paramsCard.type = (this.paramsCard.type === id) ? undefined : id;
     this.paramsCard.name = '';
     this.paramsCard.page = CONSTANT.PAGE_DEFAULT;
     this._getListsPokemon();

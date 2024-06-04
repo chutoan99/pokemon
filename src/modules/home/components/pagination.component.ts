@@ -39,7 +39,6 @@ export class PaginationComponent {
       endPage = this._displayPage;
       startPage = Math.max(endPage - this._maxPage + 1, 1);
     }
-    console.log(this.currentPage, 'currentPage');
     for (let i: number = startPage; i <= endPage; i++) {
       pagesArray.push(i);
     }

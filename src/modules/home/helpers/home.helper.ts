@@ -35,7 +35,6 @@ export function conFigParams(params: ParamCard): string {
       ([_key, value]) => value !== '' && value != null
     )
   );
-  console.log(filteredParams, 'filteredParams');
   //* Construct the query string
   const queryString = Object.keys(filteredParams)
     .map((key) => {
@@ -45,8 +44,11 @@ export function conFigParams(params: ParamCard): string {
       } else {
         prefix = 'filter';
       }
-
-      return `${prefix}[${key}]=${encodeURIComponent(filteredParams[key])}`;
+      if (key !== 'sort') {
+        return `${prefix}[${key}]=${encodeURIComponent(filteredParams[key])}`;
+      } else {
+        return `${key}=${encodeURIComponent(filteredParams[key])}`;
+      }
     })
     .join('&');
 

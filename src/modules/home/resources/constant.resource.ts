@@ -5,6 +5,26 @@ export const CONSTANT = {
   ITEMS_PER_PAGE: 20,
 };
 
+export enum SortType {
+  'ASC' = 'asc',
+  'DES' = 'des',
+}
+
+export enum SortValue {
+  NUMBER = 'number',
+  NAME = 'name',
+  TYPE = 'type',
+  TOTAL = 'total',
+  HP = 'hp',
+  ATTACK = 'attack',
+  DEFENSE = 'defense',
+  SP_ATK = 'sp_atk',
+  SP_DEF = 'sp_def',
+  SPEED = 'speed',
+  CREATED_AT = 'created_at',
+  UPDATED_AT = 'updated_at',
+}
+
 export const TYPE_COLOR: Record<TypeCard, TypeExtra> = {
   0: {
     id: 0,
@@ -115,3 +135,21 @@ export const TYPE_COLOR: Record<TypeCard, TypeExtra> = {
     icon: '../../../assets/icons/fairy.svg',
   },
 };
+
+export const sortTypes = [
+  { id: 'ascending', title: 'Ascending', value: SortType.ASC },
+  { id: 'descending', title: 'Descending', value: SortType.DES },
+];
+
+export const sortWith = [
+  { id: 'number', title: 'Number', value: SortValue.NUMBER },
+  { id: 'total', title: 'Total', value: SortValue.TOTAL },
+  { id: 'hp', title: 'Hp', value: SortValue.HP },
+  { id: 'attack', title: 'Attack', value: SortValue.ATTACK },
+  { id: 'defense', title: 'Defense', value: SortValue.DEFENSE },
+  { id: 'sp_atk', title: 'Special attack', value: SortValue.SP_ATK },
+  { id: 'sp_def', title: 'Special defense', value: SortValue.SP_DEF },
+  { id: 'speed', title: 'Speed', value: SortValue.SPEED },
+  { id: 'created_at', title: 'Created at', value: SortValue.CREATED_AT },
+  { id: 'updated_at', title: 'Updated at', value: SortValue.UPDATED_AT },
+];

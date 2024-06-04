@@ -1,10 +1,10 @@
 import { GenerationCard, LegendaryCard, TypeCard } from '../interfaces';
-import { CONSTANT } from '../resources';
+import { CONSTANT, SortValue } from '../resources';
 
 export class ParamCard {
   page: number = CONSTANT.PAGE_DEFAULT;
   size: number = CONSTANT.ITEMS_PER_PAGE;
-  sort?: string;
+  sort: string =  SortValue.NUMBER;
   name?: string;
   generation?: GenerationCard;
   legendary?: LegendaryCard;

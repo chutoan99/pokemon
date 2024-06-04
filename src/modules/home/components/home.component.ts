@@ -2,7 +2,14 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PokemonService } from '../services';
 import { ParamCard } from '../models';
 import { Card, TypeCard, TypeExtra, Types } from '../interfaces';
-import { CONSTANT, TYPE_COLOR } from '../resources';
+import {
+  CONSTANT,
+  SortType,
+  SortValue,
+  TYPE_COLOR,
+  sortTypes,
+  sortWith,
+} from '../resources';
 import { capitalizeFirstLetter } from '../helpers';
 import { finalize } from 'rxjs';
 @Component({
@@ -18,7 +25,10 @@ export class HomePageComponent implements OnInit {
   protected urls: any[] = [];
   protected isLoading: boolean = false;
   protected typesRecords: TypeExtra[] = [];
-
+  protected sortOrder: string = SortType.ASC;
+  protected sortTypesRecord = sortTypes;
+  protected sortValue: string = SortValue.NUMBER;
+  protected sortWithRecord = sortWith;
   constructor(
     private readonly _cdRef: ChangeDetectorRef,
     private readonly _pokemonService: PokemonService
@@ -63,6 +73,26 @@ export class HomePageComponent implements OnInit {
   }
 
   /**
+   * @param {SortType} order
+   * @return {void}
+   */
+  protected selectSortOrder(order: SortType) {
+    this.sortOrder = order;
+    this._setParamSort(this.sortValue);
+    this._getListsPokemon();
+  }
+
+  /**
+   * @param {SortType} order
+   * @return {void}
+   */
+  protected selectSortValue(value: SortValue) {
+    this.sortValue = value;
+    this._setParamSort(value);
+    this._getListsPokemon();
+  }
+
+  /**
    * @return {void}
    */
   private _getListsPokemon() {
@@ -99,5 +129,20 @@ export class HomePageComponent implements OnInit {
     this._pokemonService.getImage(id).subscribe((res: any) => {
       this.images = URL.createObjectURL(res);
     });
+  }
+
+  /**
+   * @param value
+   * @return {void}
+   */
+  private _setParamSort(value: any) {
+    switch (this.sortOrder) {
+      case SortType.ASC:
+        this.paramsCard.sort = `${value}`;
+        break;
+      case SortType.DES:
+        this.paramsCard.sort = `-${value}`;
+        break;
+    }
   }
 }

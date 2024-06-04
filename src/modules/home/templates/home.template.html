@@ -85,21 +85,6 @@
           </details>
         </div>
 
-        <!-- <hr class="filter_line" />
-        <h2 class="filter__name">Types Pokemon</h2>
-        <div class="filter__types">
-          <div
-            class="filter__type"
-            *ngFor="let type of typesRecords"
-            [ngStyle]="{'--type-color': type.color}"
-            [class.type--active]="type.id === paramsCard.type"
-            (click)="onChooseType( type.id )"
-          >
-            <img [src]="type.icon" [alt]="type.name" [title]="type.name" />
-            <span>{{type.name}}</span>
-          </div>
-        </div> -->
-
         <hr class="filter_line" />
         <h2 class="filter__name">Total</h2>
         <div class="filter__wrapper">
@@ -185,6 +170,27 @@
         </div>
 
         <hr class="filter_line" />
+        <h2 class="filter__name">Special Attack</h2>
+        <div class="filter__wrapper">
+          <div class="filter__inputs">
+            <input
+              type="number"
+              placeholder="..."
+              [(ngModel)]="paramsCard.min_sp_atk"
+            />
+            <span></span>
+            <input
+              type="number"
+              placeholder="..."
+              [(ngModel)]="paramsCard.max_sp_atk"
+            />
+          </div>
+          <button type="button" class="filter__button" (click)="onSubmit()">
+            Áp dụng
+          </button>
+        </div>
+
+        <hr class="filter_line" />
         <h2 class="filter__name">Defense</h2>
         <div class="filter__wrapper">
           <div class="filter__inputs">
@@ -198,6 +204,27 @@
               type="number"
               placeholder="..."
               [(ngModel)]="paramsCard.max_defense"
+            />
+          </div>
+          <button type="button" class="filter__button" (click)="onSubmit()">
+            Áp dụng
+          </button>
+        </div>
+
+        <hr class="filter_line" />
+        <h2 class="filter__name">Special Defense</h2>
+        <div class="filter__wrapper">
+          <div class="filter__inputs">
+            <input
+              type="number"
+              placeholder="..."
+              [(ngModel)]="paramsCard.min_sp_def"
+            />
+            <span></span>
+            <input
+              type="number"
+              placeholder="..."
+              [(ngModel)]="paramsCard.max_sp_def"
             />
           </div>
           <button type="button" class="filter__button" (click)="onSubmit()">

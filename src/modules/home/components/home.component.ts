@@ -118,8 +118,10 @@ export class HomePageComponent implements OnInit {
       .getList(this.paramsCard)
       .pipe(
         finalize(() => {
-          this.isLoading = false;
-          this._cdRef.markForCheck();
+          setTimeout(()=>{
+            this.isLoading = false;
+            this._cdRef.markForCheck();
+          }, 500)
         })
       )
       .subscribe((res: Card[] | []) => {

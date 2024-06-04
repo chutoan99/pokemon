@@ -2,7 +2,7 @@
 <main *ngIf="!isLoad" class="cards">
   <ng-container *ngIf="records.length >0">
     <ng-container *ngFor="let item of records">
-      <div id="card">
+      <div id="card" (click)="onShowDetail(item.id)">
         <div class="card_inner">
           <div
             class="card card_front"
@@ -70,3 +70,4 @@
     </ng-container>
   </ng-container>
 </main>
+<card [isShow]="isShowDetail" [data]="recordDetail"></card>

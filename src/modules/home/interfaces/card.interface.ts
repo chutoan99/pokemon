@@ -9,24 +9,24 @@ export type Types = {
 
 export type TypeExtra = Types & {
   color: string;
-  icon: any
+  icon: any;
 };
 
-export type Card = {
-  id: string;
-  number: number;
-  name: string;
-  type_1: TypeCard;
-  type_2?: TypeCard;
-  total: number;
-  hp: number;
-  attack: number;
-  defense: number;
-  sp_atk: number;
-  sp_def: number;
-  speed: number;
-  generation: GenerationCard;
-  legendary: LegendaryCard;
-  created_at: string;
-  updated_at: string;
-};
+export class Card {
+  id: string = '';
+  number: number = 0;
+  name: string = '';
+  type_1: TypeCard = 0;
+  type_2?: TypeCard = undefined;
+  total: number = 0;
+  hp: number = 0;
+  attack: number = 0;
+  defense: number = 0;
+  sp_atk: number = 0;
+  sp_def: number = 0;
+  speed: number = 0;
+  generation: GenerationCard = 1;
+  legendary: LegendaryCard = 0;
+  created_at: string = '';
+  updated_at: string = '';
+}

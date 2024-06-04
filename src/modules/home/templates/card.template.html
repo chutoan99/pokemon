@@ -1,0 +1,119 @@
+<div *ngIf="isShow" class="overlay" (click)="onClose()">
+  <div class="overlay__inner">
+    <div
+      class="overlay__modal"
+      [class.show]="isShow"
+      [class.hidden]="!isShow"
+      style="pointer-events: auto"
+      [ngStyle]="{'--type-color': typeRecords[data.type_1].color}"
+    >
+      <div class="overlay__pokemon-intro">
+        <div class="overlay__current-pokemon">
+          <img
+            src="https://monikode.github.io/pokedex/assets/pokemon/{{ data.number }}.png"
+            alt="Pokemon-Image"
+            class="overlay__pokemon-image"
+          />
+          <div class="overlay__pokemon-content">
+            <span class="overlay__id-number"> # {{data.number | number:'3.0-0'}}</span
+            ><span class="overlay__pokemon-name">{{data.name}}</span>
+            <div class="card_types">
+              <div
+                class="card_type"
+                [style.background]="typeRecords[data.type_1].color"
+              >
+                <img
+                  [src]="typeRecords[data.type_1].icon"
+                  [alt]="typeRecords[data.type_1].name"
+                  [title]="typeRecords[data.type_1].name"
+                />
+                <span>{{typeRecords[data.type_1].name}}</span>
+              </div>
+              <ng-container *ngIf="data.type_2">
+                <div
+                  class="card_type"
+                  [style.background]="typeRecords[data.type_2].color"
+                >
+                  <img
+                    [src]="typeRecords[data.type_2].icon"
+                    [alt]="typeRecords[data.type_2].name"
+                    [title]="typeRecords[data.type_2].name"
+                  />
+                  <span>{{typeRecords[data.type_2].name}}</span>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="overlay__data-container">
+        <h4>Base Stats</h4>
+        <div class="overlay__data-item">
+          <span class="overlay__category">hp</span>
+          <span class="overlay__stats-number">{{data.hp}}</span>
+          <span class="overlay__range-slide">
+            <div
+              class="overlay__range-slide-fill"
+              style="--precentage: 14.005602240896359%"
+            ></div>
+          </span>
+        </div>
+        <div class="overlay__data-item">
+          <span class="overlay__category">attack</span>
+          <span class="overlay__stats-number">{{data.attack}}</span>
+          <span class="overlay__range-slide">
+            <div
+              class="overlay__range-slide-fill"
+              style="--precentage: 14.005602240896359%"
+            ></div>
+          </span>
+        </div>
+        <div class="overlay__data-item">
+          <span class="overlay__category">defense</span>
+          <span class="overlay__stats-number">{{data.defense}}</span>
+          <span class="overlay__range-slide">
+            <div
+              class="overlay__range-slide-fill"
+              style="--precentage: 13.029315960912053%"
+            ></div>
+          </span>
+        </div>
+        <div class="overlay__data-item">
+          <span class="overlay__category">special attack</span>
+          <span class="overlay__stats-number">{{data.sp_atk}}</span>
+          <span class="overlay__range-slide">
+            <div
+              class="overlay__range-slide-fill"
+              style="--precentage: 11.904761904761903%"
+            ></div>
+          </span>
+        </div>
+        <div class="overlay__data-item">
+          <span class="overlay__category">special defense</span>
+          <span class="overlay__stats-number">{{data.sp_def}}</span>
+          <span class="overlay__range-slide">
+            <div
+              class="overlay__range-slide-fill"
+              style="--precentage: 9.77198697068404%"
+            ></div>
+          </span>
+        </div>
+        <div class="overlay__data-item">
+          <span class="overlay__category">speed</span>
+          <span class="overlay__stats-number">{{data.speed}}</span>
+          <span class="overlay__range-slide">
+            <div
+              class="overlay__range-slide-fill"
+              style="--precentage: 9.920634920634921%"
+            ></div>
+          </span>
+        </div>
+        <div class="overlay__data-item">
+          <span class="overlay__category">total</span>
+          <span class="overlay__stats-number">{{data.total}}</span>
+        </div>
+        <div class="overlay__data-item"></div>
+      </div>
+    </div>
+  </div>
+</div>

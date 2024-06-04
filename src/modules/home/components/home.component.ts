@@ -12,7 +12,6 @@ import { finalize } from 'rxjs';
 })
 export class HomePageComponent implements OnInit {
   protected paramsCard = new ParamCard();
-  protected recordDetail: Card | {} = {};
   protected records: Card[] | [] = [];
   protected types: Types[] | [] = [];
   protected images: string = '';
@@ -30,7 +29,6 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     this._getListsPokemon();
     this._getTypesPokemon();
-    this._getDetailPokemon('01H5GXS0FP36H9RNBQN5Z415W4');
   }
 
   /**
@@ -90,16 +88,6 @@ export class HomePageComponent implements OnInit {
   private _getTypesPokemon() {
     this._pokemonService.getTypes().subscribe((res: Types[] | []) => {
       this.types = res;
-    });
-  }
-
-  /**
-   * @param {string} id
-   * @return {void}
-   */
-  private _getDetailPokemon(id: string) {
-    this._pokemonService.getDetail(id).subscribe((res: Card | {}) => {
-      this.recordDetail = res;
     });
   }
 

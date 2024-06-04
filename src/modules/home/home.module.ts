@@ -11,10 +11,12 @@ import {
   HomePageComponent,
   PaginationComponent,
   LoaderComponent,
+  CardComponent,
 } from './components';
 
 @NgModule({
   declarations: [
+    CardComponent,
     HomePageComponent,
     ListCardComponent,
     PaginationComponent,

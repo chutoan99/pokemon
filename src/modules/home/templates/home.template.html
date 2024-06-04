@@ -1,7 +1,7 @@
-<div class="app-wrapper">
+<div id="app">
   <div id="search">
     <img
-      class="search_icon"
+      class="search__icon"
       alt="Search icon"
       src="../../../assets/icons/search.svg"
       width="22"
@@ -10,17 +10,17 @@
     <input
       type="text"
       placeholder="Find a Pokémon..."
-      class="search_input"
+      class="search__input"
       [(ngModel)]="paramsCard.name"
     />
-    <button class="search_button" (click)="onSearch()">Search</button>
+    <button class="search__button" (click)="onSearch()">Search</button>
   </div>
-  <div class="app-inner">
+  <div class="app__inner">
     <div id="filter">
       <h2 class="filter_name">Sort Pokemon</h2>
 
-      <div class="filter_content">
-        <details class="custom-select">
+      <div class="filter__content">
+        <details>
           <summary class="radios">
             <ng-container *ngFor="let sortType of sortTypesRecord">
               <input
@@ -46,7 +46,7 @@
           </ul>
         </details>
 
-        <details class="custom-select">
+        <details>
           <summary class="radios">
             <ng-container *ngFor="let sortWith of sortWithRecord">
               <input
@@ -71,7 +71,6 @@
             </ng-container>
           </ul>
         </details>
-
       </div>
 
       <h2 class="filter_name">Types Pokemon</h2>
@@ -89,7 +88,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div id="container">
       <list-card [records]="records" [isLoad]="isLoading"></list-card>
       <ng-container *ngIf="records.length > 0 && !isLoading">
         <pagination

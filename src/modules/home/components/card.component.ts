@@ -1,4 +1,4 @@
-import {  Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TYPE_COLOR } from '../resources';
 import { Card } from '../interfaces';
 
@@ -9,11 +9,13 @@ import { Card } from '../interfaces';
 })
 export class CardComponent {
   @Input() public isShow!: boolean;
-  @Input() public data!: Card
+  @Input() public data!: Card;
   protected readonly typeRecords = TYPE_COLOR;
 
-  protected onClose() {
+  /**
+   * @return {void}
+   */
+  protected onClose(): void {
     this.isShow = false;
   }
-
 }

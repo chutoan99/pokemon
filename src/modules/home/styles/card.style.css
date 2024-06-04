@@ -6,7 +6,6 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
 }
-
 .overlay__inner {
   display: flex;
   justify-content: center;
@@ -14,7 +13,8 @@
   width: 100%;
   height: 100%;
 }
-.overlay__modal {
+
+#modal {
   --main-padding: 20px 2.5vw 0 20px;
   width: 60%;
   border-radius: 25px;
@@ -31,38 +31,54 @@
   background: var(--type-color);
 }
 
-.overlay__pokemon-intro {
+#modal .model__banner {
   padding: 25px;
   padding: var(--main-padding);
   flex: 1;
 }
-
-.overlay__current-pokemon {
+#modal .model__banner .model__banner--inner {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 0px;
 }
-
-.overlay__current-pokemon img {
+#modal .model__banner .model__banner--inner img {
   width: 25%;
   margin-right: 5%;
   animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both,
     blur 0.3s ease-out;
   animation-delay: 0.55s;
 }
-
-.card_stats {
+#modal .model__banner .model__banner--content {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
+  position: relative;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
 }
-.card_stats p {
-  margin-top: 2px;
-  color: #404060;
+#modal .model__banner .model__banner--content-id {
+  font-weight: 600;
+  position: absolute;
+  top: -10px;
+  color: rgba(0, 0, 0, 0.7);
 }
-.overlay__data-item {
+#modal .model__banner .model__banner--content-name {
+  font-size: 53px;
+  font-weight: 600;
+  line-height: 60px;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+#modal .mode__info {
+  padding: var(--main-padding);
+  background: #fff;
+  border-radius: 25px;
+}
+#modal .mode__info h4 {
+  color: var(--type-color);
+}
+#modal .mode__info .mode__info--item {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -70,33 +86,36 @@
   padding: 5px 0px;
   width: 100%;
 }
-.overlay__category {
+#modal .mode__info .mode__info--item-category {
   width: 150px;
   font-weight: 600;
   color: #3d3d40;
   text-transform: capitalize;
 }
-.overlay__range-slide {
+#modal .mode__info .mode__info--item-stats {
+  color: #7d7d7d;
+  width: 30px;
+  margin: 0 10px;
+}
+#modal .mode__info .mode__info--item-slide {
   flex: 1;
   padding: 0;
   border: 0.5px solid var(--type-color);
   border-radius: 10px;
   color: var(--type-color);
 }
-
-.overlay__range-slide-fill {
+#modal .mode__info .mode__info--item-slide-fill {
   position: relative;
   height: 5px;
   border-radius: 10px;
   width: var(--precentage);
 }
-
-.overlay__range-slide-fill::after {
+#modal .mode__info .mode__info--item-slide-fill::after {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
-  
+
   display: block;
   height: 100%;
   width: 100%;
@@ -104,45 +123,8 @@
   border-radius: 100px;
   animation: fill 1s backwards;
 }
-.overlay__data-container {
-  padding: var(--main-padding);
-  background: #fff;
-  border-radius: 25px;
-}
 
-.overlay__data-container h4 {
-  color: var(--type-color);
-}
-
-.overlay__stats-number {
-  color: #7d7d7d;
-  width: 30px;
-  margin: 0 10px;
-}
-
-.overlay__pokemon-content {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-}
-
-.overlay__id-number {
-  font-weight: 600;
-  position: absolute;
-  top: -10px;
-  color: rgba(0, 0, 0, 0.7);
-}
-
-.overlay__pokemon-name {
-  font-size: 53px;
-  font-weight: 600;
-  line-height: 60px;
-  letter-spacing: 1px;
-  color: #fff;
-}
-.card_types {
+#modal .card__types {
   position: absolute;
   bottom: -35px;
 
@@ -150,7 +132,7 @@
   width: 100%;
   gap: 10px;
 }
-.card_types .card_type {
+#modal .card__types .card__type {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -160,18 +142,18 @@
   gap: 4px;
   letter-spacing: 0.4px;
 }
-.card_types .card_type img {
+#modal .card__types .card__type img {
   width: 13px;
   height: 13px;
 }
-.card_types .card_type span {
+#modal .card__types .card__type span {
   font-size: 12px;
   font-weight: 600;
 
   color: #fff;
   cursor: pointer;
 }
-.card_types .card_type:hover {
+#modal .card__types .card__type:hover {
   opacity: 0.6;
   transition: 0.3s;
 }

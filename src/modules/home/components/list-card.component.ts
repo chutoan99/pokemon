@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { finalize } from 'rxjs';
 import { Card } from '../interfaces';
 import { TYPE_COLOR } from '../resources';
 import { PokemonService } from '../services';
-import { finalize } from 'rxjs';
 
 @Component({
   selector: 'list-card',
@@ -10,11 +10,12 @@ import { finalize } from 'rxjs';
   styleUrls: ['../styles/list-card.style.css'],
 })
 export class ListCardComponent {
+
   @Input() public records!: Card[];
   @Input() public isLoad: boolean = false;
 
   protected isShowDetail: boolean = false;
-  protected recordDetail: Card = new Card()
+  protected recordDetail: Card = new Card();
   protected readonly typeRecords = TYPE_COLOR;
 
   constructor(
@@ -26,7 +27,7 @@ export class ListCardComponent {
    * @param {string} id
    * @return {void}
    */
-  protected onShowDetail(id: string) {
+  protected onShowDetail(id: string): void {
     this._getDetailPokemon(id);
   }
 
@@ -34,7 +35,7 @@ export class ListCardComponent {
    * @param {string} id
    * @return {void}
    */
-  private _getDetailPokemon(id: string) {
+  private _getDetailPokemon(id: string): void {
     this.isShowDetail = false;
     this._pokemonService
       .getDetail(id)

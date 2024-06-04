@@ -1,25 +1,27 @@
 <div *ngIf="isShow" class="overlay" (click)="onClose()">
   <div class="overlay__inner">
     <div
-      class="overlay__modal"
+      id="modal"
       [class.show]="isShow"
       [class.hidden]="!isShow"
       style="pointer-events: auto"
       [ngStyle]="{'--type-color': typeRecords[data.type_1].color}"
     >
-      <div class="overlay__pokemon-intro">
-        <div class="overlay__current-pokemon">
+      <div class="model__banner">
+        <div class="model__banner--inner">
           <img
             src="https://monikode.github.io/pokedex/assets/pokemon/{{ data.number }}.png"
             alt="Pokemon-Image"
             class="overlay__pokemon-image"
           />
-          <div class="overlay__pokemon-content">
-            <span class="overlay__id-number"> # {{data.number | number:'3.0-0'}}</span
-            ><span class="overlay__pokemon-name">{{data.name}}</span>
-            <div class="card_types">
+          <div class="model__banner--content">
+            <span class="model__banner--content-id"
+              ># {{data.number | number:'3.0-0'}}</span
+            >
+            <span class="model__banner--content-name">{{data.name}}</span>
+            <div class="card__types">
               <div
-                class="card_type"
+                class="card__type"
                 [style.background]="typeRecords[data.type_1].color"
               >
                 <img
@@ -31,7 +33,7 @@
               </div>
               <ng-container *ngIf="data.type_2">
                 <div
-                  class="card_type"
+                  class="card__type"
                   [style.background]="typeRecords[data.type_2].color"
                 >
                   <img
@@ -46,73 +48,73 @@
           </div>
         </div>
       </div>
-      <div class="overlay__data-container">
+      <div class="mode__info">
         <h4>Base Stats</h4>
-        <div class="overlay__data-item">
-          <span class="overlay__category">hp</span>
-          <span class="overlay__stats-number">{{data.hp}}</span>
-          <span class="overlay__range-slide">
+        <div class="mode__info--item">
+          <span class="mode__info--item-category">hp</span>
+          <span class="mode__info--item-stats">{{data.hp}}</span>
+          <span class="mode__info--item-slide">
             <div
-              class="overlay__range-slide-fill"
+              class="mode__info--item-slide-fill"
               style="--precentage: 14.005602240896359%"
             ></div>
           </span>
         </div>
-        <div class="overlay__data-item">
-          <span class="overlay__category">attack</span>
-          <span class="overlay__stats-number">{{data.attack}}</span>
-          <span class="overlay__range-slide">
+        <div class="mode__info--item">
+          <span class="mode__info--item-category">attack</span>
+          <span class="mode__info--item-stats">{{data.attack}}</span>
+          <span class="mode__info--item-slide">
             <div
-              class="overlay__range-slide-fill"
+              class="mode__info--item-slide-fill"
               style="--precentage: 14.005602240896359%"
             ></div>
           </span>
         </div>
-        <div class="overlay__data-item">
-          <span class="overlay__category">defense</span>
-          <span class="overlay__stats-number">{{data.defense}}</span>
-          <span class="overlay__range-slide">
+        <div class="mode__info--item">
+          <span class="mode__info--item-category">defense</span>
+          <span class="mode__info--item-stats">{{data.defense}}</span>
+          <span class="mode__info--item-slide">
             <div
-              class="overlay__range-slide-fill"
+              class="mode__info--item-slide-fill"
               style="--precentage: 13.029315960912053%"
             ></div>
           </span>
         </div>
-        <div class="overlay__data-item">
-          <span class="overlay__category">special attack</span>
-          <span class="overlay__stats-number">{{data.sp_atk}}</span>
-          <span class="overlay__range-slide">
+        <div class="mode__info--item">
+          <span class="mode__info--item-category">special attack</span>
+          <span class="mode__info--item-stats">{{data.sp_atk}}</span>
+          <span class="mode__info--item-slide">
             <div
-              class="overlay__range-slide-fill"
+              class="mode__info--item-slide-fill"
               style="--precentage: 11.904761904761903%"
             ></div>
           </span>
         </div>
-        <div class="overlay__data-item">
-          <span class="overlay__category">special defense</span>
-          <span class="overlay__stats-number">{{data.sp_def}}</span>
-          <span class="overlay__range-slide">
+        <div class="mode__info--item">
+          <span class="mode__info--item-category">special defense</span>
+          <span class="mode__info--item-stats">{{data.sp_def}}</span>
+          <span class="mode__info--item-slide">
             <div
-              class="overlay__range-slide-fill"
+              class="mode__info--item-slide-fill"
               style="--precentage: 9.77198697068404%"
             ></div>
           </span>
         </div>
-        <div class="overlay__data-item">
-          <span class="overlay__category">speed</span>
-          <span class="overlay__stats-number">{{data.speed}}</span>
-          <span class="overlay__range-slide">
+        <div class="mode__info--item">
+          <span class="mode__info--item-category">speed</span>
+          <span class="mode__info--item-stats">{{data.speed}}</span>
+          <span class="mode__info--item-slide">
             <div
-              class="overlay__range-slide-fill"
+              class="mode__info--item-slide-fill"
               style="--precentage: 9.920634920634921%"
             ></div>
           </span>
         </div>
-        <div class="overlay__data-item">
-          <span class="overlay__category">total</span>
-          <span class="overlay__stats-number">{{data.total}}</span>
+        <div class="mode__info--item">
+          <span class="mode__info--item-category">total</span>
+          <span class="mode__info--item-stats">{{data.total}}</span>
         </div>
-        <div class="overlay__data-item"></div>
+        <div class="mode__info--item"></div>
       </div>
     </div>
   </div>

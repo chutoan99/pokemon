@@ -56,7 +56,7 @@ export class PaginationComponent {
   /**
    * @return {void}
    */
-  protected onNextPage() {
+  protected onNextPage(): void {
     if (this.currentPage < this._displayPage) {
       this.currentPage++;
       this._updatePage();
@@ -67,7 +67,7 @@ export class PaginationComponent {
    * @param {number} page
    * @return {void}
    */
-  protected onGoToPage(page: number) {
+  protected onGoToPage(page: number): void {
     if (page === this.currentPage) return;
     this.currentPage = page;
     this._updatePage();
@@ -76,7 +76,7 @@ export class PaginationComponent {
   /**
    * @return {void}
    */
-  protected onPrevPage() {
+  protected onPrevPage(): void {
     if (this.currentPage > this._firstPage) {
       this.currentPage--;
       this._updatePage();
@@ -86,7 +86,7 @@ export class PaginationComponent {
   /**
    * @return {void}
    */
-  protected onFirstPage() {
+  protected onFirstPage(): void {
     this.currentPage = this._firstPage;
     this._updatePage();
   }
@@ -94,7 +94,7 @@ export class PaginationComponent {
   /**
    * @return {void}
    */
-  protected onLastPage() {
+  protected onLastPage(): void {
     this.currentPage = this._displayPage;
     this._updatePage();
   }
@@ -102,7 +102,7 @@ export class PaginationComponent {
   /**
    * @return {void}
    */
-  private _updatePage() {
+  private _updatePage(): void {
     this.pageChange.emit(this.currentPage);
   }
 }

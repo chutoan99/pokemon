@@ -23,7 +23,7 @@ export class PokemonService {
   constructor(private _httpClient: HttpClient) {}
 
   /**
-   * @param {ParamCard} param
+   * @param {ParamCard} params
    * @return {Observable<Card[] | []>}
    */
   public getList(params: ParamCard): Observable<Card[] | []> {

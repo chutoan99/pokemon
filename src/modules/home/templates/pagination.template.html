@@ -1,5 +1,5 @@
-<div class="pagination">
-  <button class="pagination-item" (disabled)="isFirst" (click)="onFirstPage()">
+<div id="pagination">
+  <button class="pagination__item" (disabled)="isFirst" (click)="onFirstPage()">
     <img
       alt="angles left"
       src="../../../assets/icons/angles-left.svg"
@@ -7,7 +7,7 @@
       height="15"
     />
   </button>
-  <button class="pagination-item" (disabled)="isFirst" (click)="onPrevPage()">
+  <button class="pagination__item" (disabled)="isFirst" (click)="onPrevPage()">
     <img
       alt="left right"
       src="../../../assets/icons/angle-left.svg"
@@ -16,14 +16,14 @@
     />
   </button>
   <button
-    class="pagination-item"
+    class="pagination__item"
     *ngFor="let page of pages"
-    [class.pagination-item--active]="page === currentPage"
+    [class.pagination__item--active]="page === currentPage"
     (click)="onGoToPage( page )"
   >
     {{ page }}
   </button>
-  <button class="pagination-item" (disabled)="isLast" (click)="onNextPage()">
+  <button class="pagination__item" (disabled)="isLast" (click)="onNextPage()">
     <img
       alt="angle right"
       src="../../../assets/icons/angle-right.svg"
@@ -31,7 +31,7 @@
       height="15"
     />
   </button>
-  <button class="pagination-item" (disabled)="isLast" (click)="onLastPage()">
+  <button class="pagination__item" (disabled)="isLast" (click)="onLastPage()">
     <img
       alt="angles right"
       src="../../../assets/icons/angles-right.svg"

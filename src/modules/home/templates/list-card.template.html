@@ -3,29 +3,29 @@
   <ng-container *ngIf="records.length >0">
     <ng-container *ngFor="let item of records">
       <div id="card" (click)="onShowDetail(item.id)">
-        <div class="card_inner">
+        <div class="card__inner">
           <div
-            class="card card_front"
+            class="card card__front"
             [ngStyle]="{'--type-color': typeRecords[item.type_1].color}"
           >
-            <div class="card_header">
-              <span class="card_header--number">
+            <div class="card__header">
+              <span class="card__header--number">
                 # {{item.number | number:'3.0-0'}}
               </span>
-              <p class="card_header--hp">
+              <p class="card__header--hp">
                 <span>HP</span>
                 {{item.hp}}
               </p>
             </div>
 
             <picture
-              class="card_img"
+              class="card__img"
               [ngStyle]="{'--image--': 'url(https://monikode.github.io/pokedex/assets/pokemon/' + item.number + '.png)'}"
             ></picture>
-            <h2 class="card_name">{{item.name}}</h2>
-            <div class="card_types">
+            <h2 class="card__name">{{item.name}}</h2>
+            <div class="card__types">
               <div
-                class="card_type"
+                class="card__type"
                 [style.background]="typeRecords[item.type_1].color"
               >
                 <img
@@ -37,7 +37,7 @@
               </div>
               <ng-container *ngIf="item.type_2">
                 <div
-                  class="card_type"
+                  class="card__type"
                   [style.background]="typeRecords[item.type_2].color"
                 >
                   <img
@@ -49,7 +49,7 @@
                 </div>
               </ng-container>
             </div>
-            <div class="card_stats">
+            <div class="card__stats">
               <div>
                 <h3>{{item.attack}}</h3>
                 <p>Attack</p>
@@ -64,7 +64,7 @@
               </div>
             </div>
           </div>
-          <div class="card_back"></div>
+          <div class="card__back"></div>
         </div>
       </div>
     </ng-container>

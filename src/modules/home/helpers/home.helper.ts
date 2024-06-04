@@ -1,7 +1,7 @@
 import { ParamCard } from '../models';
 
 /**
- * @param {ParamCard} param
+ * @param {ParamCard} params
  * @return {string}
  */
 export function conFigParams(params: ParamCard): string {
@@ -61,5 +61,5 @@ export function conFigParams(params: ParamCard): string {
  */
 export function capitalizeFirstLetter(value?: string): string | undefined {
   if (!value) return value;
-  return value.charAt(0).toUpperCase() + value.slice(1);
+  return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
 }

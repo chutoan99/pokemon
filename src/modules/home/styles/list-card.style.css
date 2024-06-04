@@ -8,21 +8,21 @@
   grid-row-gap: 20px;
 }
 
-#card .card_inner {
+#card .card__inner {
   position: relative;
   transition: transform 1.5s;
   transform-style: preserve-3d;
 }
-#card:hover .card_inner {
+#card:hover .card__inner {
   transform: rotateY(180deg);
 }
-#card .card_front,
-#card .card_back {
+#card .card__front,
+#card .card__back {
   position: absolute;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-#card .card_back {
+#card .card__back {
   top: 0 !important;
   background: transparent url("../../../assets/images/backroup.jpg") no-repeat
     center/cover;
@@ -33,6 +33,7 @@
 }
 
 #card .card {
+  cursor: pointer;
   position: relative;
   width: 100%;
   border-radius: 15px;
@@ -44,7 +45,7 @@
     #ffffff 36%
   );
 }
-#card .card .card_img {
+#card .card .card__img {
   display: block;
   position: relative;
 
@@ -53,19 +54,19 @@
   margin: 0px auto;
   background: transparent var(--image--) no-repeat center/contain;
 }
-#card .card .card_header {
+#card .card .card__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-#card .card .card_header .card_header--number {
+#card .card .card__header .card__header--number {
   text-align: center;
   font-size: 19px;
   color: #fff;
   letter-spacing: 0.4px;
   font-weight: 500;
 }
-#card .card .card_header .card_header--hp {
+#card .card .card__header .card__header--hp {
   text-align: center;
   width: 64px;
   background-color: #fff;
@@ -73,23 +74,23 @@
   border-radius: 20px;
   font-weight: 400;
 }
-#card .card .card_header .card_header--hp span {
+#card .card .card__header .card__header--hp span {
   font-size: 14px;
   letter-spacing: 0.4px;
   font-weight: 600;
 }
-#card .card .card_name {
+#card .card .card__name {
   text-align: center;
   padding-top: 4px;
   font-size: 19px;
   font-weight: 600;
 }
-#card .card .card_types {
+#card .card .card__types {
   display: flex;
   justify-content: space-around;
   margin: 16px 0 32px 0;
 }
-#card .card .card_types .card_type {
+#card .card .card__types .card__type {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,28 +100,28 @@
   gap: 4px;
   letter-spacing: 0.4px;
 }
-#card .card .card_types .card_type img {
+#card .card .card__types .card__type img {
   width: 13px;
   height: 13px;
 }
-#card .card .card_types .card_type span {
+#card .card .card__types .card__type span {
   font-size: 12px;
   font-weight: 600;
 
   color: #fff;
   cursor: pointer;
 }
-#card .card .card_types .card_type:hover {
+#card .card .card__types .card__type:hover {
   opacity: 0.6;
   transition: 0.3s;
 }
-#card .card .card_stats {
+#card .card .card__stats {
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-align: center;
 }
-#card .card .card_stats p {
+#card .card .card__stats p {
   margin-top: 2px;
   color: #404060;
 }

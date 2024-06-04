@@ -23,24 +23,20 @@
           class="type"
           *ngFor="let type of typesRecords"
           [ngStyle]="{'--type-color': type.color}"
-          [class.type--active]="type.id === currentType"
-          (click)="onChooseType( type )"
+          [class.type--active]="type.id === paramsCard.type"
+          (click)="onChooseType( type.id )"
         >
-          <img [src]="type.icon" [alt]="type.name" />
+          <img [src]="type.icon" [alt]="type.name" [title]="type.name" />
           <span>{{type.name}}</span>
         </div>
       </div>
     </div>
 
     <div class="container">
-      <main class="parent">
-        <ng-container *ngIf="records.length >0">
-          <ng-container *ngFor="let item of records">
-            <card-item [data]="item"></card-item>
-          </ng-container>
-        </ng-container>
-      </main>
-      <pagination></pagination>
+      <list-card [records]="records" [isLoad]="isLoading"></list-card>
+      <ng-container *ngIf="records.length > 0 && !isLoading">
+        <pagination (pageChange)='onPageChange( $event)' [currentPage]="paramsCard.page"></pagination>
+      </ng-container>
     </div>
   </div>
 </div>

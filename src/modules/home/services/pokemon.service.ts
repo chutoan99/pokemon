@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, filter, map } from 'rxjs';
+import { Observable, catchError, filter, map, throwError } from 'rxjs';
+import { ParamCard } from '../models/params.model';
+import { Card, Types } from '../interfaces';
+import { conFigParams } from '../helpers';
 import {
   CardListResponse,
   DetailCardResponse,
   Pagination,
   TypeCardResponse,
 } from '../interfaces/home.interface';
-import { ParamCard } from '../models/params.model';
-import { Card, Types } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -30,33 +31,13 @@ export class PokemonService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
-      params: {
-        'page[size]': params.size,
-        'page[number]': params.page,
-        'page[sort]': params.sort || '',
-        'page[name]': params.name || '',
-        'page[generation]': params.generation || '',
-        'page[legendary]': params.legendary || '',
-        'page[type]': params.type || '',
-        'page[min_total]': params.min_total || '',
-        'page[max_total]': params.max_total || '',
-        'page[min_speed]': params.min_speed || '',
-        'page[max_speed]': params.max_speed || '',
-        'page[min_sp_def]': params.min_sp_def || '',
-        'page[max_sp_def]': params.max_sp_def || '',
-        'page[min_sp_atk]': params.min_sp_atk || '',
-        'page[max_sp_atk]': params.max_sp_atk || '',
-        'page[max_hp]': params.max_hp || '',
-        'page[min_hp]': params.min_hp || '',
-        'page[max_defense]': params.max_defense || '',
-        'page[min_defense]': params.min_defense || '',
-        'page[max_attack]': params.max_attack || '',
-        'page[min_attack]': params.min_attack || '',
-      },
     };
-
+    const paramString: string = conFigParams(params);
     return this._httpClient
-      .get<CardListResponse>(`${this._endPoint}/pokemons`, httpOptions)
+      .get<CardListResponse>(
+        `${this._endPoint}/pokemons?${paramString}`,
+        httpOptions
+      )
       .pipe(
         filter(
           (res: CardListResponse) => res.status === 200 && res.data !== null
@@ -64,7 +45,8 @@ export class PokemonService {
         map((res: CardListResponse) => {
           this.pagination = res.meta;
           return res.data || [];
-        })
+        }),
+        catchError(this._handleError)
       );
   }
 
@@ -85,7 +67,8 @@ export class PokemonService {
         filter(
           (res: DetailCardResponse) => res.status === 200 && res.data !== null
         ),
-        map((res: DetailCardResponse) => res.data || {})
+        map((res: DetailCardResponse) => res.data || {}),
+        catchError(this._handleError)
       );
   }
 
@@ -104,13 +87,35 @@ export class PokemonService {
         filter(
           (res: TypeCardResponse) => res.status === 200 && res.data !== null
         ),
-        map((res: TypeCardResponse) => res.data || [])
+        map((res: TypeCardResponse) => res.data || []),
+        catchError(this._handleError)
       );
   }
 
+  /**
+   * @param {string} id
+   * @return {Observable<Blob>}
+   */
   public getImage(id: string): Observable<Blob> {
     return this._httpClient.get(`${this._endPoint}/pokemons/${id}/sprite`, {
       responseType: 'blob',
     });
+  }
+
+  /**
+   * @param error
+   * @return {Observable<never>}
+   */
+  private _handleError(error: any): Observable<never> {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `Client-side error: ${error.error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `Server-side error: ${error.status} ${error.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(() => new Error(errorMessage));
   }
 }

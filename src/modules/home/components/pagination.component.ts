@@ -4,10 +4,8 @@ import {
   Component,
   Output,
   EventEmitter,
+  Input,
 } from '@angular/core';
-import { Card } from '../interfaces';
-import { CONSTANT } from '../resources';
-
 @Component({
   selector: 'pagination',
   templateUrl: '../templates/pagination.template.html',
@@ -15,10 +13,11 @@ import { CONSTANT } from '../resources';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaginationComponent {
-  @Output() public pageChange: EventEmitter<Card[]> = new EventEmitter<
-    Card[]
-  >();
-  protected currentPage: number = CONSTANT.PAGE_DEFAULT;
+  @Input() public currentPage!: number;
+
+  @Output() public pageChange: EventEmitter<number> =
+    new EventEmitter<number>();
+
   private _firstPage: number = 1;
   private _displayPage: number = 0;
   private _maxPage: number = 10;
@@ -40,7 +39,7 @@ export class PaginationComponent {
       endPage = this._displayPage;
       startPage = Math.max(endPage - this._maxPage + 1, 1);
     }
-
+    console.log(this.currentPage, 'currentPage');
     for (let i: number = startPage; i <= endPage; i++) {
       pagesArray.push(i);
     }
@@ -61,6 +60,7 @@ export class PaginationComponent {
   protected onNextPage() {
     if (this.currentPage < this._displayPage) {
       this.currentPage++;
+      this._updatePage();
     }
   }
 
@@ -71,6 +71,7 @@ export class PaginationComponent {
   protected onGoToPage(page: number) {
     if (page === this.currentPage) return;
     this.currentPage = page;
+    this._updatePage();
   }
 
   /**
@@ -79,6 +80,7 @@ export class PaginationComponent {
   protected onPrevPage() {
     if (this.currentPage > this._firstPage) {
       this.currentPage--;
+      this._updatePage();
     }
   }
 
@@ -87,6 +89,7 @@ export class PaginationComponent {
    */
   protected onFirstPage() {
     this.currentPage = this._firstPage;
+    this._updatePage();
   }
 
   /**
@@ -94,5 +97,13 @@ export class PaginationComponent {
    */
   protected onLastPage() {
     this.currentPage = this._displayPage;
+    this._updatePage();
+  }
+
+  /**
+   * @return {void}
+   */
+  private _updatePage() {
+    this.pageChange.emit(this.currentPage);
   }
 }

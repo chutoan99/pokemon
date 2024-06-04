@@ -12,7 +12,7 @@
 .filter__types .filter__type {
   padding: 8px;
   border-radius: 5px;
-  opacity: 0.6;
+  opacity: 0.8;
   display: flex;
   gap: 5px;
   justify-content: center;

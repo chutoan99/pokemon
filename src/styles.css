@@ -46,3 +46,22 @@ html {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+/* Ẩn mũi tên tăng giảm trên Chrome, Safari và Opera */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} /* Ẩn mũi tên tăng giảm trên Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+} /* Ẩn mũi tên tăng giảm trên Chrome, Safari và Opera */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Ẩn mũi tên tăng giảm trên Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}

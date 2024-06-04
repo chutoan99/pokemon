@@ -1,0 +1,38 @@
+.filter__types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+  max-width: 1200px;
+  width: 100%;
+  padding: 5px 10px 15px;
+  padding: 0 10px;
+}
+.filter__types .filter__type {
+  padding: 8px;
+  border-radius: 5px;
+  opacity: 0.6;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--type-color);
+}
+.filter__types .type--active,
+.filter__types .filter__type:hover {
+  opacity: 1;
+  scale: 1.2;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 
+  0 0 20px rgba(255, 255, 255, 0.4), 
+  0 0 30px rgba(255, 255, 255, 0.2);
+transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.filter__types .filter__type img {
+  width: 18px;
+  height: 18px;
+}
+.filter__types .filter__type span {
+  color: #fff;
+}

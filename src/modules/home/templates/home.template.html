@@ -15,75 +15,194 @@
     />
     <button class="search__button" (click)="onSearch()">Search</button>
   </div>
+  <div class="filter__types">
+    <div
+      class="filter__type"
+      *ngFor="let type of typesRecords"
+      [ngStyle]="{'--type-color': type.color}"
+      [class.type--active]="type.id === paramsCard.type"
+      (click)="onChooseType( type.id )"
+    >
+      <img [src]="type.icon" [alt]="type.name" [title]="type.name" />
+      <span>{{type.name}}</span>
+    </div>
+  </div>
   <div class="app__inner">
     <div id="filter">
-      <h2 class="filter_name">Sort Pokemon</h2>
+      <div class="filter_inner">
+        <h2 class="filter__name">Sort Pokemon</h2>
+        <div class="filter__content">
+          <details>
+            <summary class="radios">
+              <ng-container *ngFor="let sortType of sortTypesRecord">
+                <input
+                  type="radio"
+                  id="{{ sortType.id }}"
+                  title="{{ sortType.title }}"
+                  [(ngModel)]="sortOrder"
+                  [value]="sortType.value"
+                />
+              </ng-container>
+            </summary>
+            <ul class="list">
+              <ng-container *ngFor="let sortType of sortTypesRecord">
+                <li>
+                  <label
+                    for="{{ sortType.id }}"
+                    (click)="onSelectSortOrder(sortType.value)"
+                  >
+                    {{ sortType.title }}
+                  </label>
+                </li>
+              </ng-container>
+            </ul>
+          </details>
 
-      <div class="filter__content">
-        <details>
-          <summary class="radios">
-            <ng-container *ngFor="let sortType of sortTypesRecord">
-              <input
-                type="radio"
-                id="{{ sortType.id }}"
-                title="{{ sortType.title }}"
-                [(ngModel)]="sortOrder"
-                [value]="sortType.value"
-              />
-            </ng-container>
-          </summary>
-          <ul class="list">
-            <ng-container *ngFor="let sortType of sortTypesRecord">
-              <li>
-                <label
-                  for="{{ sortType.id }}"
-                  (click)="selectSortOrder(sortType.value)"
-                >
-                  {{ sortType.title }}
-                </label>
-              </li>
-            </ng-container>
-          </ul>
-        </details>
+          <details>
+            <summary class="radios">
+              <ng-container *ngFor="let sortWith of sortWithRecord">
+                <input
+                  type="radio"
+                  id="{{ sortWith.id }}"
+                  title="{{ sortWith.title }}"
+                  [(ngModel)]="sortValue"
+                  [value]="sortWith.value"
+                />
+              </ng-container>
+            </summary>
+            <ul class="list">
+              <ng-container *ngFor="let sortWith of sortWithRecord">
+                <li>
+                  <label
+                    for="{{ sortWith.id }}"
+                    (click)="onSelectSortValue(sortWith.value)"
+                  >
+                    {{ sortWith.title }}
+                  </label>
+                </li>
+              </ng-container>
+            </ul>
+          </details>
+        </div>
 
-        <details>
-          <summary class="radios">
-            <ng-container *ngFor="let sortWith of sortWithRecord">
-              <input
-                type="radio"
-                id="{{ sortWith.id }}"
-                title="{{ sortWith.title }}"
-                [(ngModel)]="sortValue"
-                [value]="sortWith.value"
-              />
-            </ng-container>
-          </summary>
-          <ul class="list">
-            <ng-container *ngFor="let sortWith of sortWithRecord">
-              <li>
-                <label
-                  for="{{ sortWith.id }}"
-                  (click)="selectSortValue(sortWith.value)"
-                >
-                  {{ sortWith.title }}
-                </label>
-              </li>
-            </ng-container>
-          </ul>
-        </details>
-      </div>
+        <!-- <hr class="filter_line" />
+        <h2 class="filter__name">Types Pokemon</h2>
+        <div class="filter__types">
+          <div
+            class="filter__type"
+            *ngFor="let type of typesRecords"
+            [ngStyle]="{'--type-color': type.color}"
+            [class.type--active]="type.id === paramsCard.type"
+            (click)="onChooseType( type.id )"
+          >
+            <img [src]="type.icon" [alt]="type.name" [title]="type.name" />
+            <span>{{type.name}}</span>
+          </div>
+        </div> -->
 
-      <h2 class="filter_name">Types Pokemon</h2>
-      <div class="filter_types">
-        <div
-          class="type"
-          *ngFor="let type of typesRecords"
-          [ngStyle]="{'--type-color': type.color}"
-          [class.type--active]="type.id === paramsCard.type"
-          (click)="onChooseType( type.id )"
-        >
-          <img [src]="type.icon" [alt]="type.name" [title]="type.name" />
-          <span>{{type.name}}</span>
+        <hr class="filter_line" />
+        <h2 class="filter__name">Total</h2>
+        <div class="filter__wrapper">
+          <div class="filter__inputs">
+            <input
+              type="number"
+              placeholder="180..."
+              [(ngModel)]="paramsCard.min_total"
+            />
+            <span></span>
+            <input
+              type="number"
+              placeholder="770..."
+              [(ngModel)]="paramsCard.max_total"
+            />
+          </div>
+          <button type="button" class="filter__button" (click)="onSubmit()">
+            Áp dụng
+          </button>
+        </div>
+
+        <hr class="filter_line" />
+        <h2 class="filter__name">Hp</h2>
+        <div class="filter__wrapper">
+          <div class="filter__inputs">
+            <input
+              type="number"
+              placeholder="1..."
+              [(ngModel)]="paramsCard.min_hp"
+            />
+            <span></span>
+            <input
+              type="number"
+              placeholder="255..."
+              [(ngModel)]="paramsCard.max_hp"
+            />
+          </div>
+          <button type="button" class="filter__button" (click)="onSubmit()">
+            Áp dụng
+          </button>
+        </div>
+
+        <hr class="filter_line" />
+        <h2 class="filter__name">Speed</h2>
+        <div class="filter__wrapper">
+          <div class="filter__inputs">
+            <input
+              type="number"
+              placeholder="..."
+              [(ngModel)]="paramsCard.min_speed"
+            />
+            <span></span>
+            <input
+              type="number"
+              placeholder="..."
+              [(ngModel)]="paramsCard.max_speed"
+            />
+          </div>
+          <button type="button" class="filter__button" (click)="onSubmit()">
+            Áp dụng
+          </button>
+        </div>
+
+        <hr class="filter_line" />
+        <h2 class="filter__name">Attack</h2>
+        <div class="filter__wrapper">
+          <div class="filter__inputs">
+            <input
+              type="number"
+              placeholder="..."
+              [(ngModel)]="paramsCard.min_attack"
+            />
+            <span></span>
+            <input
+              type="number"
+              placeholder="..."
+              [(ngModel)]="paramsCard.max_attack"
+            />
+          </div>
+          <button type="button" class="filter__button" (click)="onSubmit()">
+            Áp dụng
+          </button>
+        </div>
+
+        <hr class="filter_line" />
+        <h2 class="filter__name">Defense</h2>
+        <div class="filter__wrapper">
+          <div class="filter__inputs">
+            <input
+              type="number"
+              placeholder="..."
+              [(ngModel)]="paramsCard.min_defense"
+            />
+            <span></span>
+            <input
+              type="number"
+              placeholder="..."
+              [(ngModel)]="paramsCard.max_defense"
+            />
+          </div>
+          <button type="button" class="filter__button" (click)="onSubmit()">
+            Áp dụng
+          </button>
         </div>
       </div>
     </div>

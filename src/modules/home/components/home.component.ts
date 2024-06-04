@@ -21,6 +21,7 @@ import { capitalizeFirstLetter } from '../helpers';
     '../styles/sort.style.css',
     '../styles/filter.styles.css',
     '../styles/search.style.css',
+    '../styles/types.style.css',
   ],
 })
 export class HomePageComponent implements OnInit {
@@ -80,10 +81,19 @@ export class HomePageComponent implements OnInit {
   }
 
   /**
+   * @return {void}
+   */
+  protected onSubmit(): void {
+    this.paramsCard.name = '';
+    this.paramsCard.page = CONSTANT.PAGE_DEFAULT;
+    this._getListsPokemon();
+  }
+
+  /**
    * @param {SortType} order
    * @return {void}
    */
-  protected selectSortOrder(order: SortType): void {
+  protected onSelectSortOrder(order: SortType): void {
     this.sortOrder = order;
     this._setParamSort(this.sortValue as SortValue);
     this._getListsPokemon();
@@ -93,7 +103,7 @@ export class HomePageComponent implements OnInit {
    * @param {SortType} order
    * @return {void}
    */
-  protected selectSortValue(value: SortValue): void {
+  protected onSelectSortValue(value: SortValue): void {
     this.sortValue = value;
     this._setParamSort(value);
     this._getListsPokemon();
@@ -108,10 +118,8 @@ export class HomePageComponent implements OnInit {
       .getList(this.paramsCard)
       .pipe(
         finalize(() => {
-          setTimeout(() => {
-            this.isLoading = false;
-            this._cdRef.markForCheck();
-          }, 500);
+          this.isLoading = false;
+          this._cdRef.markForCheck();
         })
       )
       .subscribe((res: Card[] | []) => {

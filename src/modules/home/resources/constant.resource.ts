@@ -2,7 +2,7 @@ import { TypeCard, TypeExtra } from '../interfaces';
 
 export const CONSTANT = {
   PAGE_DEFAULT: 1,
-  ITEMS_PER_PAGE: 20,
+  ITEMS_PER_PAGE: 12,
 };
 
 export enum SortType {

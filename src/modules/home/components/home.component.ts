@@ -65,7 +65,6 @@ export class HomePageComponent implements OnInit {
    */
   protected onSearch(): void {
     this.paramsCard.name = capitalizeFirstLetter(this.paramsCard.name?.trim());
-    if (!this.paramsCard.name) return;
     this.paramsCard.type = undefined;
     this.paramsCard.page = CONSTANT.PAGE_DEFAULT;
     this._getListsPokemon();
